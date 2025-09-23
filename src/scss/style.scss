@@ -1,0 +1,98 @@
+@import "./../../node_modules/bootstrap/scss/bootstrap";
+@import "./../../node_modules/swiper/swiper-bundle.min.css";
+@import "./../../node_modules/swiper/swiper.min.css";
+@import "font-icons";
+@import "mixin";
+
+body {
+  padding: 0;
+  direction: ltr;
+  position: relative;
+  font-family: "Outfit", serif;
+  background-color: #1F2347;
+  color: #ffffff;
+
+  > main {
+
+    .content {
+
+      .content-container {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 24px;
+
+        @media (max-width: 991.98px) {
+          grid-template-columns: 1fr;
+
+          .sidebar {
+            order: 2;
+          }
+
+          .section-content {
+            order: 1;
+          }
+        }
+
+        .sidebar {
+          background-color: #232339;
+          padding: 36px;
+
+          .profile {
+            margin-bottom: 16px;
+
+            > img {
+              width: 90px;
+              height: 90px;
+              border-radius: 64px;
+              object-fit: cover;
+              margin-bottom: 12px;
+            }
+
+            .name {
+
+              > h1 {
+                font-weight: 500;
+                font-size: 28px;
+                line-height: 32px;
+                letter-spacing: -0.02em;
+                color: #E2E6EE;
+                margin-bottom: 4px;
+              }
+
+              > p {
+                font-weight: 500;
+                font-size: 20px;
+                white-space: nowrap;
+                letter-spacing: 0.01em;
+                background: linear-gradient(90deg, #A478E8 0%, #516CF7 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              }
+            }
+          }
+
+          .quote {
+            display: flex;
+            gap: 8px;
+
+            > img {
+              width: 24px;
+              height: 24px;
+            }
+
+            > p {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 24px;
+              letter-spacing: 0.02em;
+              color: #D9DFE8;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
