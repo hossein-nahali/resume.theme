@@ -11989,13 +11989,13 @@ body > main .content .content-container .sidebar .profile .name > p {
 }
 body > main .content .content-container .sidebar .information {
   display: flex;
-  gap: 24px;
+  gap: 12px;
   flex-direction: column;
   padding-left: 0;
 }
 body > main .content .content-container .sidebar .information > li {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 body > main .content .content-container .sidebar .information > li > .icon {
   display: flex;
