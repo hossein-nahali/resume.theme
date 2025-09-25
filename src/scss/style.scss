@@ -26,7 +26,7 @@ body {
 
       .content-container {
         display: grid;
-        grid-template-columns: 340px calc(100vw - 1121px);
+        grid-template-columns: 340px 1fr;
 
         @media (max-width: 991.98px) {
           grid-template-columns: 1fr;
@@ -213,6 +213,7 @@ body {
             > li {
               display: flex;
               gap: 12px;
+              margin-bottom: 0;
 
               > .icon {
                 display: flex;
@@ -451,7 +452,7 @@ body {
               display: flex;
               flex-direction: column;
               padding: 0 40px;
-              gap: 12px;
+              gap: 8px;
               margin: 32px 0 0;
 
               @media (max-width: 992px) {
@@ -607,6 +608,7 @@ body {
 
                     @media (max-width: 992px) {
                       width: 100%;
+                      height: 200px;
                     }
                   }
 
@@ -917,7 +919,6 @@ body {
         }
 
         ul li {
-          margin-bottom: 12px;
 
           &:last-child {
             margin-bottom: 0;
