@@ -12406,6 +12406,9 @@ body > main .content .content-container .section-content .experience .experience
   letter-spacing: 0.01em;
   color: #D9DFE8;
   min-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 body > main .content .content-container .section-content .experience .experience-list > li .experience-info .experience-location {
   display: flex;

@@ -537,6 +537,9 @@ body {
                     letter-spacing: 0.01em;
                     color: #D9DFE8;
                     min-height: 26px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                   }
 
                   .experience-location {
