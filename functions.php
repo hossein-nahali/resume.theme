@@ -265,4 +265,34 @@ function resume_theme_body_classes($classes) {
     return $classes;
 }
 add_filter('body_class', 'resume_theme_body_classes');
+
+
+const resume_theme = __FILE__;
+define( "resume_theme_uri", plugin_dir_url( __FILE__ ) );
+
+if ( ! class_exists( 'resume_theme\Autoload', false ) ) {
+    include( plugin_dir_path( __FILE__ ) . 'classes/core/Autoload.php' );
+}
+
+
+/**
+ * Check if Elementor is installed and activated
+ */
+function resume_theme_require_elementor() {
+    if (!did_action('elementor/loaded')) {
+        add_action('admin_notices', 'resume_theme_elementor_not_loaded');
+        return false;
+    }
+    return true;
+}
+add_action('init', 'resume_theme_require_elementor');
+
+/**
+ * Admin notice for missing Elementor
+ */
+function resume_theme_elementor_not_loaded() {
+    $class = 'notice notice-warning';
+    $message = esc_html__('Resume Theme requires Elementor plugin to be installed and activated.', 'resume-theme');
+    printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
+}
 ?>
