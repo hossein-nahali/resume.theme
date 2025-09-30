@@ -12277,7 +12277,7 @@ body > main .content .content-container .section-content .title:after {
   height: 28px;
   border-radius: 32px;
   background: #2E2E48;
-  left: -13px;
+  left: -14px;
   top: 2px;
   z-index: 3;
 }
@@ -12293,8 +12293,8 @@ body > main .content .content-container .section-content .title:before {
   height: 10px;
   border-radius: 12px;
   background: #C696FC;
-  left: -4px;
-  top: 10px;
+  left: -6px;
+  top: 11px;
   z-index: 4;
 }
 @media (max-width: 992px) {
@@ -12525,9 +12525,6 @@ body > main .content .content-container .section-content .latest-projects .proje
   width: 24px;
   height: 24px;
 }
-body > main .content .content-container .section-content .skills {
-  margin-bottom: 40px;
-}
 @media (max-width: 992px) {
   body > main .content .content-container .section-content .skills {
     margin-bottom: 32px;
@@ -12591,6 +12588,7 @@ body > main .content .content-container .section-content .skills .skills-list .s
   background: hsl(240, 22.03%, 23.14%);
   flex: 1;
   transition: 0.3s;
+  min-width: fit-content;
 }
 body > main .content .content-container .section-content .skills .skills-list .skill .skills-container > ul > li:hover {
   background: hsl(240, 22%, 20%);

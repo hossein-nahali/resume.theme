@@ -404,7 +404,7 @@ body {
               height: 28px;
               border-radius: 32px;
               background: #2E2E48;
-              left: -13px;
+              left: -14px;
               top: 2px;
               z-index: 3;
               @media (max-width: 992px) {
@@ -419,8 +419,8 @@ body {
               height: 10px;
               border-radius: 12px;
               background: #C696FC;
-              left: -4px;
-              top: 10px;
+              left: -6px;
+              top: 11px;
               z-index: 4;
               @media (max-width: 992px) {
                 display: none;
@@ -675,7 +675,6 @@ body {
           }
 
           .skills {
-            margin-bottom: 40px;
 
             @media (max-width: 992px) {
               margin-bottom: 32px;
@@ -741,6 +740,7 @@ body {
                       background: hsl(240deg 22.03% 23.14%);
                       flex: 1;
                       transition: .3s;
+                      min-width: fit-content;
 
                       &:hover {
                         background: hsl(240deg 22% 20%);

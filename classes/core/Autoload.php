@@ -75,6 +75,7 @@ class Autoload
     {
         $list = [
             'elementor-widgets/include-widgets',
+            'setting/setting',
         ];
 
         foreach ($list as $item) {

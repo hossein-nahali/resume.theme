@@ -67,19 +67,19 @@ class Skills_Widget extends Widget_Base
             ]
         );
 
-        // Inner repeater: items under each skill group
-        $item_repeater = new \Elementor\Repeater();
+        // فقط یک ریپیتر ساده
+        $repeater = new \Elementor\Repeater();
 
-        $item_repeater->add_control(
+        $repeater->add_control(
             'skill_item_icon',
             [
                 'label' => esc_html__('Icon/Image', 'resume-theme'),
                 'type' => Controls_Manager::MEDIA,
-                'default' => [ 'url' => get_template_directory_uri() . '/src/img/logos/JavaScript.svg' ],
+                'default' => ['url' => get_template_directory_uri() . '/src/img/logos/JavaScript.svg'],
             ]
         );
 
-        $item_repeater->add_control(
+        $repeater->add_control(
             'skill_item_name',
             [
                 'label' => esc_html__('Item Name', 'resume-theme'),
@@ -89,141 +89,36 @@ class Skills_Widget extends Widget_Base
             ]
         );
 
-        // Outer repeater: groups (li.skill)
-        $group_repeater = new \Elementor\Repeater();
-
-        $group_repeater->add_control(
-            'skill_group_title',
-            [
-                'label' => esc_html__('Group Title', 'resume-theme'),
-                'type' => Controls_Manager::TEXT,
-                'default' => 'Developer',
-                'placeholder' => esc_html__('Enter group title', 'resume-theme'),
-            ]
-        );
-
-        $group_repeater->add_control(
-            'skill_group_items',
-            [
-                'label' => esc_html__('Group Items', 'resume-theme'),
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $item_repeater->get_controls(),
-                'default' => [
-                    [ 'skill_item_name' => 'React', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/React-Dark.svg' ] ],
-                    [ 'skill_item_name' => 'Next', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/NextJS-Dark.svg' ] ],
-                    [ 'skill_item_name' => 'JavaScript', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/JavaScript.svg' ] ],
-                    [ 'skill_item_name' => 'TypeScript', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/TypeScript.svg' ] ],
-                ],
-                'title_field' => '{{{ skill_item_name }}}',
-            ]
-        );
-
         $this->add_control(
-            'skill_groups',
+            'skills',
             [
-                'label' => esc_html__('Skill Groups', 'resume-theme'),
+                'label' => esc_html__('Skills', 'resume-theme'),
                 'type' => Controls_Manager::REPEATER,
-                'fields' => $group_repeater->get_controls(),
+                'fields' => $repeater->get_controls(),
                 'default' => [
                     [
                         'skill_group_title' => 'Developer',
-                        'skill_group_items' => [
-                            [ 'skill_item_name' => 'React', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/React-Dark.svg' ] ],
-                            [ 'skill_item_name' => 'Next', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/NextJS-Dark.svg' ] ],
-                            [ 'skill_item_name' => 'JavaScript', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/JavaScript.svg' ] ],
-                            [ 'skill_item_name' => 'TypeScript', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/TypeScript.svg' ] ],
-                        ]
+                        'skill_item_name' => 'React',
+                        'skill_item_icon' => ['url' => get_template_directory_uri() . '/src/img/logos/React-Dark.svg'],
+                    ],
+                    [
+                        'skill_group_title' => 'Developer',
+                        'skill_item_name' => 'Next',
+                        'skill_item_icon' => ['url' => get_template_directory_uri() . '/src/img/logos/NextJS-Dark.svg'],
                     ],
                     [
                         'skill_group_title' => 'Tools',
-                        'skill_group_items' => [
-                            [ 'skill_item_name' => 'Postman', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/Postman.svg' ] ],
-                            [ 'skill_item_name' => 'Pnpm', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/Pnpm-Dark.svg' ] ],
-                            [ 'skill_item_name' => 'Figma', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/Figma-Dark.svg' ] ],
-                            [ 'skill_item_name' => 'Xd', 'skill_item_icon' => [ 'url' => get_template_directory_uri() . '/src/img/logos/XD.svg' ] ],
-                        ]
+                        'skill_item_name' => 'Postman',
+                        'skill_item_icon' => ['url' => get_template_directory_uri() . '/src/img/logos/Postman.svg'],
                     ],
                 ],
-                'title_field' => '{{{ skill_group_title }}}',
+                'title_field' => '{{{ skill_group_title }}} - {{{ skill_item_name }}}',
             ]
         );
 
         $this->end_controls_section();
 
-        $this->start_controls_section(
-            'container_section',
-            [
-                'label' => esc_html__('Container', 'resume-theme'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'container_background',
-                'label' => esc_html__('Background', 'resume-theme'),
-                'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .skills',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'container_border',
-                'label' => esc_html__('Border', 'resume-theme'),
-                'selector' => '{{WRAPPER}} .skills',
-            ]
-        );
-
-        $this->add_control(
-            'container_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'resume-theme'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .skills' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'container_shadow',
-                'label' => esc_html__('Box Shadow', 'resume-theme'),
-                'selector' => '{{WRAPPER}} .skills',
-            ]
-        );
-
-        $this->add_control(
-            'container_padding',
-            [
-                'label' => esc_html__('Padding', 'resume-theme'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .skills' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'container_margin',
-            [
-                'label' => esc_html__('Margin', 'resume-theme'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .skills' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
+        // بقیه استایل‌ها همون قبلی می‌مونه
         $this->start_controls_section(
             'group_style_section',
             [
@@ -286,28 +181,31 @@ class Skills_Widget extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        if (empty($settings['skill_groups'])) {
+        if (empty($settings['skills'])) {
             return;
+        }
+
+        // گروه‌بندی بر اساس group_title
+        $grouped = [];
+        foreach ($settings['skills'] as $skill) {
+            $grouped[$skill['skill_group_title']][] = $skill;
         }
         ?>
         <div class="skills">
-            <div class="title">
-                <h2><?php echo esc_html($settings['section_title']); ?></h2>
-            </div>
             <ul class="skills-list">
-                <?php foreach ($settings['skill_groups'] as $group): ?>
+                <?php foreach ($grouped as $group_title => $items): ?>
                     <li class="skill">
                         <div class="title-skill">
-                            <h4><?php echo esc_html($group['skill_group_title']); ?></h4>
+                            <h4><?php echo esc_html($settings['section_title']); ?></h4>
                         </div>
                         <div class="skills-container">
                             <ul>
-                                <?php if (!empty($group['skill_group_items'])): foreach ($group['skill_group_items'] as $item): ?>
+                                <?php foreach ($items as $item): ?>
                                     <li>
                                         <img src="<?php echo esc_url(!empty($item['skill_item_icon']['url']) ? $item['skill_item_icon']['url'] : get_template_directory_uri() . '/src/img/logos/JavaScript.svg'); ?>" alt="<?php echo esc_attr($item['skill_item_name']); ?>">
                                         <p><?php echo esc_html($item['skill_item_name']); ?></p>
                                     </li>
-                                <?php endforeach; endif; ?>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </li>
@@ -321,18 +219,23 @@ class Skills_Widget extends Widget_Base
     {
         ?>
         <div class="skills">
-            <div class="title">
-                <h2>{{{ settings.section_title }}}</h2>
-            </div>
             <ul class="skills-list">
-                <# _.each(settings.skill_groups, function(group) { #>
+                <#
+                var grouped = {};
+                _.each(settings.skills, function(skill) {
+                if (!grouped[skill.skill_group_title]) {
+                grouped[skill.skill_group_title] = [];
+                }
+                grouped[skill.skill_group_title].push(skill);
+                });
+                _.each(grouped, function(items, group_title) { #>
                 <li class="skill">
                     <div class="title-skill">
-                        <h4>{{{ group.skill_group_title }}}</h4>
+                        <h4>{{{ settings.section_title }}}</h4>
                     </div>
                     <div class="skills-container">
                         <ul>
-                            <# _.each(group.skill_group_items, function(item){ #>
+                            <# _.each(items, function(item) { #>
                             <li>
                                 <# if (item.skill_item_icon && item.skill_item_icon.url) { #>
                                 <img src="{{ item.skill_item_icon.url }}" alt="{{ item.skill_item_name }}">

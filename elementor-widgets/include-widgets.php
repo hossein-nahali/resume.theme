@@ -18,6 +18,8 @@ class includeWidgets
             'experience-widget',
             'latest-projects',
             'skills',
+            'title-widget',
+            'sidebar-widget',
         ];
 
         if (class_exists('Elementor\Widget_Base'))
