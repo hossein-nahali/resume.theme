@@ -11,7 +11,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/src/img/menu.svg" alt="menu">
             </button>
         </div>
-        <?= the_content(); ?>
+        <?php the_content(); ?>
     </div>
 
 <?php get_footer(); ?>

@@ -178,4 +178,30 @@ function resume_theme_elementor_not_loaded() {
     $message = esc_html__('Resume Theme requires Elementor plugin to be installed and activated.', 'resume-theme');
     printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
 }
+
+/**
+ * Enable SVG upload support
+ */
+function resume_theme_allow_svg($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'resume_theme_allow_svg');
+
+function resume_theme_fix_svg_mime($data, $file, $filename, $mimes) {
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if (strtolower($ext) === 'svg') {
+        $data['ext'] = 'svg';
+        $data['type'] = 'image/svg+xml';
+        $data['proper_filename'] = $data['proper_filename'] ?? $filename;
+    }
+    return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'resume_theme_fix_svg_mime', 10, 4);
+
+// Improve SVG preview sizing in media library
+function resume_theme_admin_svg_css() {
+    echo '<style>.attachment .icon img[src$=".svg"], .media-icon img[src$=".svg"]{width:100%;height:auto}</style>';
+}
+add_action('admin_head', 'resume_theme_admin_svg_css');
 ?>

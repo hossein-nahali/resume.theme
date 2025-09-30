@@ -31,7 +31,7 @@
             while ($info_query->have_posts()): $info_query->the_post();
                 $label = get_the_title();
                 $value_text = has_excerpt() ? get_the_excerpt() : '';
-                $meta_url = get_post_meta(get_the_ID(), 'url', true);
+                $link = get_post_meta(get_the_ID(), 'link', true);
                 $thumb = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
                 $icon_src = $thumb ? $thumb : '';
                 $lower_label = strtolower(trim($label));
@@ -56,6 +56,10 @@
                     <a href="mailto:<?php echo esc_attr($value_text); ?>"><?php echo esc_html($value_text); ?></a>
                 <?php elseif ($lower_label === 'phone' && $value_text): ?>
                     <a href="tel:<?php echo esc_attr($value_text); ?>"><?php echo esc_html($value_text); ?></a>
+                <?php elseif (!empty($link) && $value_text): ?>
+                    <a href="<?php echo esc_url($link); ?>"><?php echo esc_html($value_text); ?></a>
+                <?php elseif (!empty($link) && empty($value_text)): ?>
+                    <a href="<?php echo esc_url($link); ?>"><?php echo esc_html($link); ?></a>
                 <?php else: ?>
                     <p><?php echo esc_html($value_text); ?></p>
                 <?php endif; ?>
@@ -80,7 +84,7 @@
                 while ($social_query->have_posts()): $social_query->the_post();
                     $network = get_the_title();
                     $username = has_excerpt() ? get_the_excerpt() : '';
-                    $url = get_post_meta(get_the_ID(), 'url', true);
+                    $url = get_post_meta(get_the_ID(), 'link', true);
                     if (!$url) {
                         $content_url = trim(wp_strip_all_tags(get_the_content()));
                         $url = filter_var($content_url, FILTER_VALIDATE_URL) ? $content_url : '#';
