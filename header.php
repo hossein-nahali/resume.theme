@@ -26,12 +26,14 @@
                 </div>
             </div>
             <div class="msn-right">
-                <?php $__phone = get_theme_mod('contact_phone', '(+98) 936 907 9925'); ?>
-                <?php $__email = get_theme_mod('contact_email', 'nahali.dev@gmail.com'); ?>
-                <a class="msn-btn msn-call" href="tel:<?php echo esc_attr($__phone); ?>" aria-label="call">
+                <?php 
+                $__phone = get_contact_info('phone');
+                $__email = get_contact_info('email');
+                ?>
+                <a class="msn-btn msn-call" href="<?php echo esc_url($__phone['url']); ?>" aria-label="call">
                     <img src="<?php echo get_template_directory_uri(); ?>/src/img/phone.svg" alt="call"/>
                 </a>
-                <a class="msn-btn msn-mail" href="mailto:<?php echo esc_attr($__email); ?>" aria-label="email">
+                <a class="msn-btn msn-mail" href="<?php echo esc_url($__email['url']); ?>" aria-label="email">
                     <img src="<?php echo get_template_directory_uri(); ?>/src/img/mail.svg" alt="email"/>
                 </a>
             </div>

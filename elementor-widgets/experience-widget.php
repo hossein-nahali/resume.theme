@@ -655,11 +655,13 @@ class Experience_Widget extends Widget_Base
                         </div>
                         <div class="experience-info">
                             <span class="experience-status"><?php echo esc_html($experience['period']); ?></span>
-                            <div class="experience-location">
-                                <img src="<?php echo get_template_directory_uri(); ?>/src/img/location-2.svg"
-                                     alt="location">
-                                <span><?php echo esc_html($experience['location']); ?></span>
-                            </div>
+                            <?php if (esc_html($experience['location'])) { ?>
+                                <div class="experience-location">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/src/img/location-2.svg"
+                                         alt="location">
+                                    <span><?php echo esc_html($experience['location']); ?></span>
+                                </div>
+                            <?php } ?>
                         </div>
                     </li>
                 <?php endforeach; ?>
@@ -692,11 +694,13 @@ class Experience_Widget extends Widget_Base
                     </div>
                     <div class="experience-info">
                         <span class="experience-status">{{{ experience.period }}}</span>
+                        <# if (experience.location) { #>
                         <div class="experience-location">
                             <img src="<?php echo get_template_directory_uri(); ?>/src/img/location-2.svg"
                                  alt="location">
                             <span>{{{ experience.location }}}</span>
                         </div>
+                        <# } #>
                     </div>
                 </li>
                 <# }); #>

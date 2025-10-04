@@ -46,19 +46,13 @@ function resume_theme_scripts() {
     wp_enqueue_style('resume-theme-style', get_stylesheet_uri(), array(), '1.0.0');
     
     // Enqueue Bootstrap CSS
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), '5.3.8');
-    
-    // Enqueue Swiper CSS
-    wp_enqueue_style('swiper', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css', array(), '12.0.2');
-    
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/lib/bootstrap.min.css', array(), '5.3.8');
+
     // Enqueue custom CSS
     wp_enqueue_style('resume-custom-style', get_template_directory_uri() . '/src/css/style.css', array('bootstrap'), '1.0.0');
     
     // Enqueue Bootstrap JS
-    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js', array(), '5.3.8', true);
-    
-    // Enqueue Swiper JS
-    wp_enqueue_script('swiper', get_template_directory_uri() . '/node_modules/swiper/swiper-bundle.min.js', array(), '12.0.2', true);
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/lib/bootstrap.bundle.min.js', array(), '5.3.8', true);
     
     // Enqueue custom JS
     wp_enqueue_script('resume-custom-script', get_template_directory_uri() . '/src/js/global.js', array('bootstrap', 'swiper'), '1.0.0', true);
@@ -204,4 +198,5 @@ function resume_theme_admin_svg_css() {
     echo '<style>.attachment .icon img[src$=".svg"], .media-icon img[src$=".svg"]{width:100%;height:auto}</style>';
 }
 add_action('admin_head', 'resume_theme_admin_svg_css');
-?>
+
+require_once get_template_directory() . '/inc/helper-functions.php';
