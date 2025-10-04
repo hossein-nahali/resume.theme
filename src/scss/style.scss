@@ -1,6 +1,4 @@
-@import "./../../node_modules/bootstrap/scss/bootstrap";
-@import "./../../node_modules/swiper/swiper-bundle.min.css";
-@import "./../../node_modules/swiper/swiper.min.css";
+@import "./../../lib/bootstrap/bootstrap.min.css";
 @import "font-icons";
 @import "mixin";
 
@@ -795,6 +793,11 @@ body {
         flex-wrap: wrap;
         margin-bottom: 26px;
 
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 12px;
+        }
+
         .title-post {
           display: flex;
           gap: 12px;
@@ -835,6 +838,10 @@ body {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
+
+          @media (max-width: 768px) {
+            flex-direction: row;
+          }
 
           > time {
             font-size: 14px;

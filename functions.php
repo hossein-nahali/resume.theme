@@ -46,16 +46,13 @@ function resume_theme_scripts() {
     wp_enqueue_style('resume-theme-style', get_stylesheet_uri(), array(), '1.0.0');
     
     // Enqueue Bootstrap CSS
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/lib/bootstrap.min.css', array(), '5.3.8');
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/lib/bootstrap/bootstrap.min.css', array(), '5.3.8');
 
     // Enqueue custom CSS
     wp_enqueue_style('resume-custom-style', get_template_directory_uri() . '/src/css/style.css', array('bootstrap'), '1.0.0');
     
     // Enqueue Bootstrap JS
-    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/lib/bootstrap.bundle.min.js', array(), '5.3.8', true);
-    
-    // Enqueue custom JS
-    wp_enqueue_script('resume-custom-script', get_template_directory_uri() . '/src/js/global.js', array('bootstrap', 'swiper'), '1.0.0', true);
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/lib/bootstrap/bootstrap.bundle.min.js', array(), '5.3.8', true);
 }
 add_action('wp_enqueue_scripts', 'resume_theme_scripts');
 
