@@ -141,11 +141,14 @@ function resume_theme_body_classes($classes) {
 add_filter('body_class', 'resume_theme_body_classes');
 
 
-const resume_theme = __FILE__;
-define( "resume_theme_uri", plugin_dir_url( __FILE__ ) );
+define('RESUME_THEME_FILE', __FILE__);
+define('RESUME_THEME_DIR', get_template_directory());
+define('RESUME_THEME_URI', get_template_directory_uri());
 
-if ( ! class_exists( 'resume_theme\Autoload', false ) ) {
-    include( plugin_dir_path( __FILE__ ) . 'classes/core/Autoload.php' );
+require_once get_template_directory() . '/inc/helper-functions.php';
+
+if (!class_exists('resume_theme\Autoload', false)) {
+    require_once get_template_directory() . '/classes/core/Autoload.php';
 }
 
 
@@ -195,5 +198,3 @@ function resume_theme_admin_svg_css() {
     echo '<style>.attachment .icon img[src$=".svg"], .media-icon img[src$=".svg"]{width:100%;height:auto}</style>';
 }
 add_action('admin_head', 'resume_theme_admin_svg_css');
-
-require_once get_template_directory() . '/inc/helper-functions.php';

@@ -79,7 +79,10 @@ class Autoload
         ];
 
         foreach ($list as $item) {
-            include(plugin_dir_path(resume_theme) . "{$item}.php");
+            $path = get_template_directory() . "/{$item}.php";
+            if (is_readable($path)) {
+                include $path;
+            }
         }
     }
 

@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-use Elementor\Plugin;
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
@@ -618,11 +618,6 @@ class Experience_Widget extends Widget_Base
         $this->end_controls_section();
     }
 
-    public function register_widget()
-    {
-        Plugin::instance()->widgets_manager->register_widget_type($this);
-    }
-
     /**
      * Render widget output on the frontend
      */
@@ -710,4 +705,3 @@ class Experience_Widget extends Widget_Base
     }
 }
 
-(new Experience_Widget())->register_widget();

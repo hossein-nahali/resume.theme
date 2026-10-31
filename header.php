@@ -26,8 +26,8 @@
             </div>
             <div class="msn-right">
                 <?php 
-                $__phone = get_contact_info('phone');
-                $__email = get_contact_info('email');
+                $__phone = resume_theme_get_contact_info('phone');
+                $__email = resume_theme_get_contact_info('email');
                 ?>
                 <a class="msn-btn msn-call" href="<?php echo esc_url($__phone['url']); ?>" aria-label="call">
                     <img src="<?php echo get_template_directory_uri(); ?>/src/img/phone.svg" alt="call"/>

@@ -1,5 +1,10 @@
 <?php
-function get_contact_info($type) {
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+function resume_theme_get_contact_info($type) {
     $args = array(
         'post_type' => 'information',
         'posts_per_page' => -1,

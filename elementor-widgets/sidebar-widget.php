@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-use Elementor\Plugin;
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
@@ -307,11 +307,6 @@ class Sidebar_Widget extends Widget_Base
         $this->end_controls_section();
     }
 
-    public function register_widget()
-    {
-        Plugin::instance()->widgets_manager->register_widget_type($this);
-    }
-
     protected function render()
     {
         $settings = $this->get_settings_for_display();
@@ -522,6 +517,5 @@ class Sidebar_Widget extends Widget_Base
     }
 }
 
-(new Sidebar_Widget())->register_widget();
 
 

@@ -1,14 +1,24 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+function resume_theme_settings_page() {
+    echo '<div class="wrap"><h1>' . esc_html__('Theme Settings', 'resume-theme') . '</h1>';
+    echo '<p>' . esc_html__('Use the submenus below to manage Languages, Social Networks, and Information.', 'resume-theme') . '</p></div>';
+}
+
 // 1. Register top-level menu for Theme Settings
 add_action('admin_menu', function () {
     add_menu_page(
-        'Theme Settings',          // Page title
-        'Theme Settings',          // Menu title
-        'manage_options',          // Capability
-        'theme-settings',          // Menu slug
-        '',                        // Callback (none, just parent)
-        'dashicons-admin-generic', // Icon
-        60                         // Position
+        'Theme Settings',
+        'Theme Settings',
+        'manage_options',
+        'theme-settings',
+        'resume_theme_settings_page',
+        'dashicons-admin-generic',
+        60
     );
 });
 
